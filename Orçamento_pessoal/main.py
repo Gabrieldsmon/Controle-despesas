@@ -47,6 +47,17 @@ frameBaixo.grid(row=2, column=0, pady=0, padx=10, sticky=NSEW)
 frame_gra_pie = Frame(frameMeio, width=580, height=250, bg=co2)
 frame_gra_pie.place(x=415,y=5)
 
+# Criando frames dentro do Frame Baixo
+
+frame_renda = Frame(frameBaixo,width=300, height=250, bg=co3, relief="flat")
+frame_renda.grid(row=0, column=0)
+
+frame_operacoes = Frame(frameBaixo,width=220, height=250, bg=co3)
+frame_operacoes.grid(row=0, column=1, padx=5)
+
+frame_configuracao = Frame(frameBaixo,width=220, height=250, bg=co3)
+frame_configuracao.grid(row=0, column=2, padx=5)
+
 # Trabalhando no frame cima
 # Acessando a imagem
 app_img = Image.open('log.png')
@@ -171,12 +182,53 @@ def grafico_pie():
     canva_categoria = FigureCanvasTkAgg(figura, frame_gra_pie)
     canva_categoria.get_tk_widget().grid(row=0, column=0)
 
+# ----------------------------- Tabela Renda mensal -------------------------------------
+app_tabela = Label(frameMeio, text="Tabela Receita e Despesas", anchor=NW, font=('Verdana 12'), bg=co3, fg=co1)
+app_tabela.place(x=5, y=309)
+
+####### Codigo usado para o a tabela:
+
+# funcao para mostrar_renda
+def mostrar_renda():
+    
+    # creating a treeview with dual scrollbars
+    tabela_head = ['#Id','Categoria','Data','Quantia']
+
+    lista_itens = [[0,2,3,4],[0,2,3,4],[0,2,3,4],[0,2,3,4]]
+    
+    global tree
+
+    tree = ttk.Treeview(frame_renda, selectmode="extended",columns=tabela_head, show="headings")
+    # vertical scrollbar
+    vsb = ttk.Scrollbar(frame_renda, orient="vertical", command=tree.yview)
+    # horizontal scrollbar
+    hsb = ttk.Scrollbar(frame_renda, orient="horizontal", command=tree.xview)
+
+    tree.configure(yscrollcommand=vsb.set, xscrollcommand=hsb.set)
+
+    tree.grid(column=0, row=0, sticky='nsew')
+    vsb.grid(column=1, row=0, sticky='ns')
+    hsb.grid(column=0, row=1, sticky='ew')
+
+    hd=["center","center","center", "center"]
+    h=[30,100,100,100]
+    n=0
+
+    for col in tabela_head:
+        tree.heading(col, text=col.title(), anchor=CENTER)
+        # adjust the column's width to the header string
+        tree.column(col, width=h[n],anchor=hd[n])
+        
+        n+=1
+
+    for item in lista_itens:
+        tree.insert('', 'end', values=item)
 
 porcentagem()
 grafico_bar()
 resumo()
 grafico_pie()
-
+mostrar_renda()
 
 
 
