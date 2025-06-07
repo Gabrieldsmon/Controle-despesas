@@ -190,6 +190,14 @@ app_tabela.place(x=5, y=309)
 
 # funcao para mostrar_renda
 def mostrar_renda():
+
+    # Criando um estilo personalizado para a Treeview
+    style = ttk.Style()
+    style.configure("Treeview",
+        background=co3,       # Cor de fundo das células
+        foreground=co1,       # Cor do texto
+        fieldbackground=co3)  # Cor de fundo ao editar a célula
+    style.map("Treeview", background=[("selected", co3)])  # Cor ao selecionar linha
     
     # creating a treeview with dual scrollbars
     tabela_head = ['#Id','Categoria','Data','Quantia']
