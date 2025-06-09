@@ -142,15 +142,15 @@ def inserir_despesas_b():
     data = e_cal_despesas.get()
     quantia = e_valor_despesas.get()
 
-    lista_inserir = [nome, data, quantia]
+    lista_despesas = [nome, data, quantia]
 
-    for i in lista_inserir:
+    for i in lista_despesas:
         if i =='':
             messagebox.showerror('Erro', 'Preencha todos os campos')
             return
     
     # Chamando a funcao inserir despesas presente na view
-    inserir_gastos(lista_inserir)
+    inserir_gastos(lista_despesas)
 
     messagebox.showinfo('Sucesso', 'Os dados foram inseridos com sucesso')
 

@@ -116,7 +116,7 @@ def bar_valores():
     gastos = ver_gastos()
     gastos_lista = []
 
-    for i in receitas:
+    for i in gastos:
         gastos_lista.append(i[3])
 
     gastos_total = sum(gastos_lista)
