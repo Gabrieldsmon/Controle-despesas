@@ -131,13 +131,13 @@ def inserir_receita_b():
     # atualizando dados
     mostrar_renda()
     porcentagem()
-    grafico_bar
+    grafico_bar()
     resumo()
     grafico_pie()
 
 
 # funcao inserir despesas
-def inserir_receita_b():
+def inserir_despesas_b():
     nome = combo_categoria_despesas.get()
     data = e_cal_despesas.get()
     quantia = e_valor_despesas.get()
@@ -161,7 +161,7 @@ def inserir_receita_b():
     # atualizando dados
     mostrar_renda()
     porcentagem()
-    grafico_bar
+    grafico_bar()
     resumo()
     grafico_pie()
 
@@ -182,7 +182,7 @@ def deletar_dados():
             # atualizando dados
             mostrar_renda()
             porcentagem()
-            grafico_bar
+            grafico_bar()
             resumo()
             grafico_pie()
         
@@ -193,7 +193,7 @@ def deletar_dados():
             # atualizando dados
             mostrar_renda()
             porcentagem()
-            grafico_bar
+            grafico_bar()
             resumo()
             grafico_pie()
     except IndexError:
@@ -222,7 +222,7 @@ def porcentagem():
 #--------------------------- função para gráficos bars ----------------------------------
 def grafico_bar():
     lista_categorias = ['Renda', 'Despesas', 'Saldo']
-    lista_valores = [3000, 2000, 6540]
+    lista_valores = bar_valores()
 
     figura = plt.figure(figsize=(4, 3.45), dpi=60)
     ax = figura.add_subplot(111)
@@ -399,7 +399,7 @@ img_add_despesas = Image.open('add.png')
 img_add_despesas = img_add_despesas.resize((17,17))
 img_add_despesas = ImageTk.PhotoImage(img_add_despesas)
 
-botao_inserir_despesas = Button(frame_operacoes, command=inserir_receita_b, image=img_add_despesas, text=" Adicionar".upper(), width=80, compound=LEFT, anchor=NW, font=('Ivy 7 bold'), bg=co3, fg=co1, overrelief=RIDGE)
+botao_inserir_despesas = Button(frame_operacoes, command=inserir_despesas_b, image=img_add_despesas, text=" Adicionar".upper(), width=80, compound=LEFT, anchor=NW, font=('Ivy 7 bold'), bg=co3, fg=co1, overrelief=RIDGE)
 botao_inserir_despesas.place(x=110, y=131)
 
 # Botao Excluir

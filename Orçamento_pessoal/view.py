@@ -63,7 +63,7 @@ def ver_categoria():
 
 
 # ver Receitas
-def ver_recitas():
+def ver_receitas():
     lista_itens = []
     
     with con:
@@ -90,7 +90,7 @@ def ver_gastos():
 # funcao para dados da tabela
 def tabela():
     gastos = ver_gastos()
-    receitas = ver_recitas()
+    receitas = ver_receitas()
 
     tabela_lista = []
     for i in gastos:
@@ -104,7 +104,7 @@ def tabela():
 
 def bar_valores():
     # Receita Total ------------------------
-    receitas = ver_Receitas()
+    receitas = ver_receitas()
     receitas_lista = []
 
     for i in receitas:
@@ -113,18 +113,18 @@ def bar_valores():
     receita_total = sum(receitas_lista)
 
     # Despesas Total ------------------------
-    receitas = ver_gastos()
-    despesas_lista = []
+    gastos = ver_gastos()
+    gastos_lista = []
 
     for i in receitas:
-        despesas_lista.append(i[3])
+        gastos_lista.append(i[3])
 
-    despesas_total = sum(despesas_lista)
+    gastos_total = sum(gastos_lista)
 
     # Despesas Total ------------------------
-    saldo_total = receita_total - despesas_total
+    saldo_total = receita_total - gastos_total
 
-    return[receita_total,despesas_total,saldo_total]
+    return[receita_total,gastos_total,saldo_total]
 
 def percentagem_valor():
     # Receita Total ------------------------
